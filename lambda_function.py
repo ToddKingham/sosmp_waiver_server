@@ -33,4 +33,3 @@ def folder_completed(event_name="", event_date=None, data=None, **kwargs):
         if doc_details:
             elastic_provider = ElasticCo()
             elastic_provider.insert_document(doc_details)
-
