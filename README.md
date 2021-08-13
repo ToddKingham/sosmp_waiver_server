@@ -1,2 +1,43 @@
 # sosmp_waiver_server
 AWS middleware for SOSMP Waiver Module
+
+
+
+* Create the following two files and place them in your project root if you would like to test locally.
+* Swap out placeholder values with real values
+* Create a virtual environment and run the following line from inside the project root:
+  - `pip install -r requirements.txt`
+
+# main.js
+```
+import json
+import os
+
+
+def main():
+from lambda_function import lambda_handler
+with open('test.json', "r") as outfile:
+request = json.load(outfile)
+lambda_handler(request, {})
+
+
+if __name__ == "__main__":
+
+# set environ variables
+os.environ["ELASTIC_ENDPOINT"] = "[YOUR_VALUE_HERE]"
+os.environ["ELASTIC_ENGINE_NAME"] = "[YOUR_VALUE_HERE]"
+os.environ["ELASTIC_PRIVATE_KEY"] = "[YOUR_VALUE_HERE]"
+os.environ["E_SIGN_GENIE_BASE_URL"] = "[YOUR_VALUE_HERE]"
+os.environ["E_SIGN_GENIE_CLIENT_ID"] = "[YOUR_VALUE_HERE]"
+os.environ["E_SIGN_GENIE_CLIENT_SECRET"] = "[YOUR_VALUE_HERE]"
+main()
+```
+
+
+
+# test.json
+```
+{
+    "body": "{\"event_name\": \"folder_completed\", \"event_date\": 1628876175523, \"data\": {\"folder\": {\"folderId\": <FOLDER_ID>}}}"
+}
+```

@@ -1,0 +1,11 @@
+import os
+
+# eSign Genie
+E_SIGN_GENIE_BASE_URL = os.environ.get("E_SIGN_GENIE_BASE_URL")
+E_SIGN_GENIE_CLIENT_ID = os.environ.get("E_SIGN_GENIE_CLIENT_ID")
+E_SIGN_GENIE_CLIENT_SECRET = os.environ.get("E_SIGN_GENIE_CLIENT_SECRET")
+
+# Elastic.co
+ELASTIC_ENDPOINT = os.environ.get("ELASTIC_ENDPOINT")
+ELASTIC_PRIVATE_KEY = os.environ.get("ELASTIC_PRIVATE_KEY")
+ELASTIC_ENGINE_NAME = os.environ.get("ELASTIC_ENGINE_NAME")
