@@ -1,6 +1,6 @@
+import os
 from threading import Timer
 import requests
-from constants import E_SIGN_GENIE_BASE_URL, E_SIGN_GENIE_CLIENT_ID, E_SIGN_GENIE_CLIENT_SECRET
 
 
 class ESignGenie:
@@ -27,10 +27,10 @@ class ESignGenie:
         return result
 
     def set_access_token(self):
-        url = f"{E_SIGN_GENIE_BASE_URL}/oauth2/access_token"
+        url = f"{os.getenv('E_SIGN_GENIE_BASE_URL')}/oauth2/access_token"
         data = {
-            "client_id": E_SIGN_GENIE_CLIENT_ID,
-            "client_secret": E_SIGN_GENIE_CLIENT_SECRET,
+            "client_id": os.getenv('E_SIGN_GENIE_CLIENT_ID'),
+            "client_secret": os.getenv('E_SIGN_GENIE_CLIENT_SECRET'),
             "grant_type": "client_credentials",
             "scope": "read-write"
         }
@@ -53,7 +53,8 @@ class ESignGenie:
         # define variables
         result = None
         headers = {"Authorization": f"Bearer {self.access_token}"}
-        url = f"{E_SIGN_GENIE_BASE_URL}/{endpoint}"
+
+        url = f"{os.getenv('E_SIGN_GENIE_BASE_URL')}/{endpoint}"
 
         # call the server
         api = getattr(requests, verb.lower())
